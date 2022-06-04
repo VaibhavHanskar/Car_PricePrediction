@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div style="color:black">
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2>Predictive analysis</h2>
+            <h3>
+                Car Price Prediction
+            </h3>
+
+            <h3>Enter the carbWeight {Minimun :1488.00, Maximum:4066.00}</h3><br><input id="first" name="curbweight" type="number ">
+            <h3>Enter the Size of engine {Minimun :61.00, Maximum:326.00}</h3><br><input id="second" name="enginesize" type="number ">
+            <h3>Compression Ratio {Minimun :1.94, Maximum:3.13}</h3><input id="third" name="compressionratio" type="number ">
+            <h3>Horse Power{Minimun :48.00, Maximum:288.00}</h3><br><input id="fourth" name="horsepower" type="number ">   
+            <h3>Peak RPM {Minimun :4150.00, Maximum:6600.00}</h3><br><input id="fifth" name="peakrpm" type="number ">
+            <h3>City M/P/H {Minimun :13.00, Maximum:49.00}</h3><br><input id="sixth" name="citympg" type="number ">
+            <h3>Highway M/P/H {Minimun :16.00, Maximum:54.00}</h3><br><input id="seventh" name="highwaympg" type="number ">               
+            <h3>Symboling {Minimun :-2, Maximum:3}</h3><br><input name="symboling" id="eighth" type ="number">
+
+            <h3>Select Door Number</h3><br><select name="doornumber" id="doornumber" required="required">
+                <option value="Two">Two</option>
+                <option value="Four">Four</option>
+            </select>
+
+            <h3>Car Body Type</h3><br><select name="carbody" id="carbody" required="required">
+                <option value="Hatchback">Hatchback</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Wagon">Wagon</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <h3>Drive Wheel</h3><br><select name="drivewheel" id="drivewheel" required="required">
+                <option value="Front Wheel Drive">Front Wheel Drive</option>
+                <option value="Rear Wheel Drive">Front Wheel Drive</option>
+                <option value="Four Wheel Drive">Four Wheel Drive</option>
+            </select>
+
+            <h3>Engine Type</h3><br><select name="enginetype" id="enginetype" required="required">
+                <option value="OHC">OHC</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <h3>Engine Location</h3><br><select name="enginelocation" id="enginelocation" required="required">
+                <option value="Front">Front</option>
+                <option value="Back">Back</option>
+            </select>
+
+            <h3>Cylinder Number</h3><br><select name="cylindernumber" id="cylindernumber" required="required">
+                <option value="Four">Four</option>
+                <option value="Six">Six</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <h3>Fuel System</h3><br><select name="fuelsystem" id="fuelsystem" required="required">
+                <option value="mpfi">mpfi</option>
+                <option value="2bbl">2bbl</option>
+                <option value="Other">Other</option>
+            </select>
+
+            
+            <br><br><button id="sub" type="submit ">Get The Price</button>
+            <br>
+
+
+
+
+        </form>
+
+
+
+        <br><br><h3>{{ prediction_text }}<h3>
+    </div>
+
+
+
+
+    <style>
+        body {
+            background-color: lightslategray;
+            text-align: center;
+            padding: 0px;
+        }
+        
+        #research {
+            font-size: 18px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+        
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: rgb(168, 131, 61);
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+        
+        #fuel {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #fuel:hover {
+            background-color: coral;
+        }
+        
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #research:hover {
+            background-color: coral;
+        }
+        
+        #resea {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #resea:hover {
+            background-color: coral;
+        }
+        
+        #sub {
+            width: 120px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #sub:hover {
+            background-color: darkcyan;
+        }
+        
+        #first {
+            border-radius: 14px;
+            height: 43px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #second {
+            border-radius: 14px;
+            height: 43px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #third {
+            border-radius: 14px;
+            height: 43px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #fourth {
+            border-radius: 14px;
+            height: 43px;
+            font-size: 20px;
+            text-align: center;
+        }
+        #fifth {
+            border-radius: 14px;
+            height:43px;
+            font-size: 20px;
+            text-align: center;
+        }
+        #sixth {
+            border-radius: 14px;
+            height: 43px;
+            font-size: 20px;
+            text-align: center;
+        }
+        #seventh {
+            border-radius: 14px;
+            height: 43px;
+            font-size: 20px;
+            text-align: center;
+        }
+        #eighth {
+            border-radius: 14px;
+            height: 43px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</body>
+
+</html>
